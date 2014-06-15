@@ -138,10 +138,8 @@ fx1 <- levels(as.factor(fdata$interval[fdata$weektime=="weekday"]))
 fy1 <- sapply(fx1, function(i) {mean(fdata$steps[fdata$weektime=="weekday" & fdata$interval == i])})
 fx2 <- levels(as.factor(fdata$interval[fdata$weektime=="weekend"]))
 fy2 <- sapply(fx2, function(i) {mean(fdata$steps[fdata$weektime=="weekend" & fdata$interval == i])})
-plot(fx1, fy1, type = "l")
-plot(fx2, fy2, type = "l")
-title("My Title", outer=TRUE)
-mtext("y axis", side = 2, outer = TRUE, cex = 0.7, line = 2.2, col = "grey20")
+plot(fx1, fy1, type = "l", main = "Weekday", xlab = "Interval", ylab = "Number of steps")
+plot(fx2, fy2, type = "l", main = "Weekend", xlab = "Interval", ylab = "Number of steps")
 ```
 
 ![plot of chunk fplot](figure/fplot.png) 
