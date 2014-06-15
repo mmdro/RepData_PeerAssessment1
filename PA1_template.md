@@ -53,7 +53,7 @@ Time series plot of the 5-minute interval and the average number of steps taken,
 ```r
 x <- levels(as.factor(data$interval))
 y <- sapply(x, function(i) {mean(data$steps[data$interval == i], na.rm = TRUE)})
-plot(x, y, type = "l")
+plot(x, y, type = "l", main = "Average number of steps taken versus the 5-minute intervals", xlab = "Interval", ylab = "Average")
 ```
 
 ![plot of chunk plot](figure/plot.png) 
@@ -93,10 +93,11 @@ for (i in seq(nrow(data))) {
 }
 ```
 
-Histogram of the total number of steps taken each day:
+After missing values were imputed:
+
 
 ```r
-hist(fdata$steps)
+hist(fdata$steps, main = "Histogram of the total number of steps taken each day", xlab = "Number of steps")
 ```
 
 ![plot of chunk fhistogramsteps](figure/fhistogramsteps.png) 
