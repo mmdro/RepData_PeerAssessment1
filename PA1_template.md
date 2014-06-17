@@ -18,31 +18,32 @@ Missing values in the dataset are ignored.
 
 
 ```r
-hist(data$steps, main = "Histogram of the total number of steps taken each day", xlab = "Number of steps")
+total <- tapply(data$steps, as.factor(data$date), sum)
+hist(total, breaks = 20, main = "Histogram of the total number of steps taken each day", xlab = "Number of steps")
 ```
 
-![plot of chunk histogramsteps](figure/histogramsteps.png) 
+![plot of chunk histogramteps](figure/histogramteps.png) 
 
 Mean total number of steps taken per day:
 
 ```r
-steps.mean <- mean(data$steps, na.rm = TRUE)
+steps.mean <- mean(total, na.rm = TRUE)
 steps.mean
 ```
 
 ```
-## [1] 37.38
+## [1] 10766
 ```
 
 Median total number of steps taken per day:
 
 ```r
-steps.median <- median(data$steps, na.rm = TRUE)
+steps.median <- median(total, na.rm = TRUE)
 steps.median
 ```
 
 ```
-## [1] 0
+## [1] 10765
 ```
 
 ## What is the average daily activity pattern?
@@ -97,7 +98,8 @@ After missing values were imputed:
 
 
 ```r
-hist(fdata$steps, main = "Histogram of the total number of steps taken each day", xlab = "Number of steps")
+ftotal <- tapply(fdata$steps,as.factor(data$date),sum)
+hist(ftotal, breaks = 20, main = "Histogram of the total number of steps taken each day", xlab = "Number of steps")
 ```
 
 ![plot of chunk fhistogramsteps](figure/fhistogramsteps.png) 
@@ -105,23 +107,23 @@ hist(fdata$steps, main = "Histogram of the total number of steps taken each day"
 Mean total number of steps taken per day:
 
 ```r
-steps.mean <- mean(fdata$steps)
+steps.mean <- mean(ftotal)
 steps.mean
 ```
 
 ```
-## [1] 37.38
+## [1] 10766
 ```
 
 Median total number of steps taken per day:
 
 ```r
-steps.median <- median(fdata$steps)
+steps.median <- median(ftotal)
 steps.median
 ```
 
 ```
-## [1] 0
+## [1] 10766
 ```
 
 ## Are there differences in activity patterns between weekdays and weekends?

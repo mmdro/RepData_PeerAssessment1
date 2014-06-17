@@ -17,19 +17,20 @@ data$date <- as.Date(data$date)
 
 Missing values in the dataset are ignored.
 
-```{r histogramsteps}
-hist(data$steps, main = "Histogram of the total number of steps taken each day", xlab = "Number of steps")
+```{r histogramteps}
+total <- tapply(data$steps, as.factor(data$date), sum)
+hist(total, breaks = 20, main = "Histogram of the total number of steps taken each day", xlab = "Number of steps")
 ```
 
 Mean total number of steps taken per day:
 ```{r stepsmean}
-steps.mean <- mean(data$steps, na.rm = TRUE)
+steps.mean <- mean(total, na.rm = TRUE)
 steps.mean
 ```
 
 Median total number of steps taken per day:
 ```{r stepsmedian}
-steps.median <- median(data$steps, na.rm = TRUE)
+steps.median <- median(total, na.rm = TRUE)
 steps.median
 ```
 
@@ -70,18 +71,19 @@ for (i in seq(nrow(data))) {
 After missing values were imputed:
 
 ```{r fhistogramsteps}
-hist(fdata$steps, main = "Histogram of the total number of steps taken each day", xlab = "Number of steps")
+ftotal <- tapply(fdata$steps,as.factor(data$date),sum)
+hist(ftotal, breaks = 20, main = "Histogram of the total number of steps taken each day", xlab = "Number of steps")
 ```
 
 Mean total number of steps taken per day:
 ```{r fstepsmean}
-steps.mean <- mean(fdata$steps)
+steps.mean <- mean(ftotal)
 steps.mean
 ```
 
 Median total number of steps taken per day:
 ```{r fstepsmedian}
-steps.median <- median(fdata$steps)
+steps.median <- median(ftotal)
 steps.median
 ```
 
