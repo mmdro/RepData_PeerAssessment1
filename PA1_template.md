@@ -133,7 +133,7 @@ Creating a new factor variable in the dataset with two levels – “weekday” and “w
 ```r
 fdata$weektime <- as.factor(ifelse(as.POSIXlt(fdata$date)$wday %in% c(0,6),"weekend", "weekday"))
 ```
-
+Making a panel plot containing a time series plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis):
 
 ```r
 par(mfrow=c(2,1))

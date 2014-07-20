@@ -291,6 +291,8 @@ steps.median
 <pre><code class="r">fdata$weektime &lt;- as.factor(ifelse(as.POSIXlt(fdata$date)$wday %in% c(0,6),&quot;weekend&quot;, &quot;weekday&quot;))
 </code></pre>
 
+<p>Making a panel plot containing a time series plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis):</p>
+
 <pre><code class="r">par(mfrow=c(2,1))
 fx1 &lt;- levels(as.factor(fdata$interval[fdata$weektime==&quot;weekday&quot;]))
 fy1 &lt;- sapply(fx1, function(i) {mean(fdata$steps[fdata$weektime==&quot;weekday&quot; &amp; fdata$interval == i])})
